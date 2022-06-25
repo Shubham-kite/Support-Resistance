@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMR</title>
+    <link rel="stylesheet" href="smr.css">
+</head>
+<body>
+<div class="frame">
+    <center>
+        <pre>
+            Previous Close <b id="pclose">----</b> <br>
+            Support        <b id="support">---</b> <br>
+            Median         <b id="median"> ---</b> <br>
+            Resistance     <b id = "res"> ----</b> <br>
+        </pre>
+    </center>
+</div>
+
+   
+    <script>
+        let pre_value = window.prompt("Enter Previous Value :")
+        document.getElementById("pclose").innerHTML=pre_value;
+        list= []
+        pre_value_sqrt = Math.sqrt(pre_value)
+        num = Math.floor(pre_value_sqrt)
+        console.log(num)
+        if(num%2==0)
+        {
+            new_pre  = num-1
+            new_next = num+1
+        }
+        if(num%2!=0)
+        {
+           new_pre = num-2
+           new_next = num+2
+        }
+        new_pre = Math.floor(new_pre)
+        new_next = Math.floor(new_next)
+        console.log("New previous ",new_pre,"New next ",new_next)
+        sqr_pre = new_pre*new_pre
+        sqr_next = new_next*new_next
+        console.log("Square of new_next and new_previous "+sqr_next,sqr_pre)
+        for(i=sqr_pre;i<=sqr_next;i++)
+        {
+            //console.log(i);
+            list.push(i)
+        }
+       // console.log("support ",list[0])
+        document.getElementById("support").innerHTML = list[0]
+        med = Math.floor(list.length /2)
+      //  console.log("median :",list[med])
+        document.getElementById("median").innerHTML = list[med]
+       // console.log("support :",sqr_next)
+        document.getElementById("res").innerHTML = sqr_next
+    </script>
+</body>
+</html>
